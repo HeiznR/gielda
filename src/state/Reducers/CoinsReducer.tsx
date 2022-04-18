@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as R from "ramda";
-import { ITableItem } from "../interfaces/TableItem";
+import { ITableItem } from "../../interfaces/TableItem";
 interface IProps {
     data: ITableItem[];
 }
@@ -9,7 +9,7 @@ const initialState: IProps = {
 };
 
 const handleCoin = createSlice({
-    name: "handleTimer",
+    name: "handleCoin",
     initialState,
     reducers: {
         setData(state, action: PayloadAction<ITableItem[]>) {

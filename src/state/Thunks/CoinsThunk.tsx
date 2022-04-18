@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ITableItem } from "../interfaces/TableItem";
-import { setData } from "./CoinsReducer";
+import { ITableItem } from "../../interfaces/TableItem";
+import { setData } from "../Reducers/CoinsReducer";
 
-export const fetchData = createAsyncThunk(
-    "handleTimer/fetchData",
+export const fetchCoinData = createAsyncThunk(
+    "handleCoin/fetchCoinData",
     async function (url: string, { dispatch }) {
         try {
             const response = await axios.get<ITableItem[]>(url);
@@ -17,4 +17,4 @@ export const fetchData = createAsyncThunk(
     }
 );
 
-export default fetchData;
+export default fetchCoinData;

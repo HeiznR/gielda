@@ -10,11 +10,9 @@ interface IListPage {
 
 export const Coins: FC<IListPage> = ({ data }) => {
     const [listData, setListData] = useState<ITableItem[]>([]);
-    console.log(listData);
     const DataFiltering = (val: string) => {
         setListData(R.filter(R.where({ id: R.includes(val) }), data));
     };
-    console.log("asdf");
     useEffect(() => {
         setListData(data);
     }, [data]);
