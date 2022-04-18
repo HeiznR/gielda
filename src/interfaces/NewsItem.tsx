@@ -4,4 +4,5 @@ export interface INewsItem {
     link: string;
     title: string;
     pubData: string;
+    test: string;
 }
