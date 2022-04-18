@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./hooks/useTypedSelector";
+
+import fetchData from "./state/CoinsThunk";
+import { ITableItem } from "./interfaces/TableItem";
+import { Coins } from "./pages/Coins";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch = useAppDispatch();
+    const data: ITableItem[] = useAppSelector((state) => state.coins.data);
+    useEffect(() => {
+        dispatch(
+            fetchData(
+                "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false"
+            )
+        );
+    }, [dispatch]);
+
+    return (
+        <>
+            <Coins data={data} />
+        </>
+    );
 }
 
 export default App;
